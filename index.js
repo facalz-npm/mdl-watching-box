@@ -3,14 +3,14 @@ const cheerio = require('cheerio');
 const { Octokit } = require('@octokit/rest');
 require('dotenv/config');
 
-async function main(gistId, githubToken, user, title) {
+async function main(gistId, githubToken, user, gistTitle) {
 
     if (!user || !gistId || !githubToken) {
         console.log('Invalid configuration! To know more: https://github.com/facalz-npm/mdl-watching-box#readme');
         return process.exit(1);
     };
 
-    if (!title) title = '📺 Currently Watching | MyDramalist';
+    if (!gistTitle) gistTitle = '📺 Currently Watching | MyDramalist';
 
     const octokit = new Octokit({
         auth: `token ${githubToken}`
@@ -85,13 +85,14 @@ async function main(gistId, githubToken, user, title) {
 
             lines.push(`${truncate(title[i], 34).padEnd(34)} ${year[i]} ${type[i].padStart(7)} ${progess[i].padStart(9)}`);
         };
+
         return lines.join('\n');
     };
 
     try {
         var data = await scrap(user);
-        updateGist(data, title);
-        console.log(data);
+        updateGist(data, gistTitle);
+        console.log(data)
     } catch (error) {
         console.log('Invalid user!');
     };
