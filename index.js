@@ -91,6 +91,7 @@ async function main(gistId, githubToken, user, gistTitle) {
 
     try {
         var data = await scrap(user);
+        if (!data) data = 'Nothing around here...'
         updateGist(data, gistTitle);
         console.log(data)
     } catch (error) {
