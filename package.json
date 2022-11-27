@@ -1,6 +1,6 @@
 {
   "name": "mdl-watching-box",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "📺 Webscrap to show what you are watching in MyDramaList.",
   "main": "index.js",
   "repository": {

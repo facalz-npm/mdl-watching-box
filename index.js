@@ -83,7 +83,7 @@ async function main(gistId, githubToken, user, gistTitle) {
             year[i] = `(${year[i]})`;
             type[i] = type[i].replace('Drama Special', 'Drama S.');
 
-            lines.push(`${truncate(title[i], 34).padEnd(34)} ${year[i]} ${type[i].padStart(7)} ${progess[i].padStart(9)}`);
+            lines.push(`${truncate(title[i], 33).padEnd(33)} ${year[i]} ${type[i].padStart(8)} ${progess[i].padStart(9)}`);
         };
 
         return lines.join('\n');
